@@ -12,9 +12,11 @@ fi
 if [ ! -f /usr/share/nginx/www/wp-config.php ]; then
   # Here we generate random passwords (thank you pwgen!). The first two are for mysql users, the last batch for random keys in wp-config.php
   sed -e "s/database_name_here/$WORDPRESS_DB_NAME/
+  s/example.com/$WORDPRESS_MU_DOM/
   s/localhost/$WORDPRESS_DB_HOST/
   s/username_here/$WORDPRESS_DB_USER/
   s/password_here/$WORDPRESS_DB_PASS/
+  /^.table_prefix/s/wp_/$WORDPRESS_DB_PRFX/
   /'AUTH_KEY'/s/put your unique phrase here/`pwgen -c -n -1 65`/
   /'SECURE_AUTH_KEY'/s/put your unique phrase here/`pwgen -c -n -1 65`/
   /'LOGGED_IN_KEY'/s/put your unique phrase here/`pwgen -c -n -1 65`/
@@ -22,7 +24,7 @@ if [ ! -f /usr/share/nginx/www/wp-config.php ]; then
   /'AUTH_SALT'/s/put your unique phrase here/`pwgen -c -n -1 65`/
   /'SECURE_AUTH_SALT'/s/put your unique phrase here/`pwgen -c -n -1 65`/
   /'LOGGED_IN_SALT'/s/put your unique phrase here/`pwgen -c -n -1 65`/
-  /'NONCE_SALT'/s/put your unique phrase here/`pwgen -c -n -1 65`/" /usr/share/nginx/www/wp-config-sample.php > /usr/share/nginx/www/wp-config.php
+  /'NONCE_SALT'/s/put your unique phrase here/`pwgen -c -n -1 65`/" /usr/share/nginx/www/wp-config-musample.php > /usr/share/nginx/www/wp-config.php
 
   # Download nginx helper plugin
   curl -O `curl -i -s https://wordpress.org/plugins/nginx-helper/ | egrep -o "https://downloads.wordpress.org/plugin/[^']+"`
