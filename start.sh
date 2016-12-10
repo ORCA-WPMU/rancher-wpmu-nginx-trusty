@@ -51,7 +51,7 @@ sed -e "s/database_name_here/$WORDPRESS_DB_NAME/
   /'AUTH_SALT'/s/put your unique phrase here/$WORDPRESS_AUTH_SALT/
   /'SECURE_AUTH_SALT'/s/put your unique phrase here/$WORDPRESS_SECURE_AUTH_SALT/
   /'LOGGED_IN_SALT'/s/put your unique phrase here/$WORDPRESS_LOGGED_IN_SALT/
-  /'NONCE_SALT'/s/put your unique phrase here/$WORDPRESS_NONCE_SALT/" /usr/share/nginx/www/wp-config-sample.php > /usr/share/nginx/www/wp-config.php
+  /'NONCE_SALT'/s/put your unique phrase here/$WORDPRESS_NONCE_SALT/" /usr/share/nginx/www/wp-config-musample.php > /usr/share/nginx/www/wp-config.php
 
 # Download nginx helper plugin
 if [ ! -d /usr/share/nginx/www/wp-content/plugins/nginx-helper ]; then
