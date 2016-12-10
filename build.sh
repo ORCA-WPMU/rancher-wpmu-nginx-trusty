@@ -6,20 +6,20 @@ echo ""
 echo "Building docker-wpmu-nginx:latest"
 docker build -t="stormerider/docker-wpmu-nginx:latest" .
 echo ""
-echo "Building docker-wpmu-nginx:xenial.$DATE"
-docker build --no-cache -t="stormerider/docker-wpmu-nginx:xenial.$DATE" . -f Dockerfile-xenial
-echo ""
-echo "Building docker-wpmu-nginx:xenial"
-docker build -t="stormerider/docker-wpmu-nginx:xenial" . -f Dockerfile-xenial
-echo ""
+#echo "Building docker-wpmu-nginx:xenial.$DATE"
+#docker build --no-cache -t="stormerider/docker-wpmu-nginx:xenial.$DATE" . -f Dockerfile-xenial
+#echo ""
+#echo "Building docker-wpmu-nginx:xenial"
+#docker build -t="stormerider/docker-wpmu-nginx:xenial" . -f Dockerfile-xenial
+#echo ""
 echo "Pushing docker-wpmu-nginx:trusty.$DATE"
 docker push stormerider/docker-wpmu-nginx:trusty.$DATE
 echo ""
 echo "Pushing docker-wpmu-nginx:latest"
 docker push stormerider/docker-wpmu-nginx:latest
 echo ""
-echo "Pushing docker-wpmu-nginx:xenial.$DATE"
-docker push stormerider/docker-wpmu-nginx:xenial.$DATE
-echo ""
-echo "Pushing docker-wpmu-nginx:xenial"
-docker push stormerider/docker-wpmu-nginx:xenial
+#echo "Pushing docker-wpmu-nginx:xenial.$DATE"
+#docker push stormerider/docker-wpmu-nginx:xenial.$DATE
+#echo ""
+#echo "Pushing docker-wpmu-nginx:xenial"
+#docker push stormerider/docker-wpmu-nginx:xenial
