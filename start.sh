@@ -96,7 +96,6 @@ if ( count( \$plugins ) === 0 ) {
                                'wordfence/wordfence.php',
                                'jetpack/jetpack.php',
                                'akismet/akismet.php' );
->>>>>>> 2a52e8cb8004494c4f7bb5cd737ea32122909965
   foreach ( \$pluginsToActivate as \$plugin ) {
     if ( !in_array( \$plugin, \$plugins ) ) {
       activate_plugin( '/usr/share/nginx/www/wp-content/plugins/' . \$plugin );
