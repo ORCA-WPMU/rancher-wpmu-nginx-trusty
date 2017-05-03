@@ -54,8 +54,6 @@ sed -e "s/database_name_here/$WORDPRESS_DB_NAME/
   /'NONCE_SALT'/s/put your unique phrase here/$WORDPRESS_NONCE_SALT/" /usr/share/nginx/www/wp-config-musample.php > /usr/share/nginx/www/wp-config.php
 
 # Download plugins
-mkdir /usr/share/nginx/www/wp-content/plugins-new
-mkdir /usr/share/nginx/www/wp-content/plugin-downloads
 if [ "x$WORDPRESS_PLUGINS" == "x" ]; then
   plugins=(nginx-helper wordfence jetpack akismet wp-dbmanager nextgen-gallery)
 else
@@ -64,12 +62,10 @@ fi
 
 for plugin in "${plugins[@]}"
 do
-  /wpdl.sh plugin $plugin &
+  /wpdl.sh plugin $plugin
 done
 
 # Download themes
-mkdir /usr/share/nginx/www/wp-content/themes-new
-mkdir /usr/share/nginx/www/wp-content/theme-downloads
 if [ "x$WORDPRESS_THEMES" == "x" ]; then
   themes=(twentyten twentyeleven twentytwelve twentythirteen twentyfourteen twentyfifteen twentysixteen twentyseventeen)
 else
@@ -78,30 +74,17 @@ fi
 
 for theme in "${themes[@]}"
 do
-  /wpdl.sh theme $theme &
+  /wpdl.sh theme $theme
 done
+
+/usr/local/bin/wp plugin update --all --allow-root --path='/usr/share/nginx/www'
+/usr/local/bin/wp theme update --all --allow-root --path='/usr/share/nginx/www'
+chown -R www-data:www-data /usr/share/nginx/www/wp-content
 
 cat << ENDL >> /usr/share/nginx/www/wp-config.php
 /* Multisite */
 define( 'WP_ALLOW_MULTISITE', true );
-ENDL
-
-# Activate plugins once logged in
-cat << ENDL >> /usr/share/nginx/www/wp-config.php
 define( 'WP_AUTO_UPDATE_CORE', false );
-\$plugins = get_option( 'active_plugins' );
-if ( count( \$plugins ) === 0 ) {
-  require_once(ABSPATH .'/wp-admin/includes/plugin.php');
-  \$pluginsToActivate = array( 'nginx-helper/nginx-helper.php',
-                               'wordfence/wordfence.php',
-                               'jetpack/jetpack.php',
-                               'akismet/akismet.php' );
-  foreach ( \$pluginsToActivate as \$plugin ) {
-    if ( !in_array( \$plugin, \$plugins ) ) {
-      activate_plugin( '/usr/share/nginx/www/wp-content/plugins/' . \$plugin );
-    }
-  }
-}
 ENDL
 
 chown www-data:www-data /usr/share/nginx/www/wp-config.php
