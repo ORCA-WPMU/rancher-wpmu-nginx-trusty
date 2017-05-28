@@ -7,7 +7,7 @@ ARG VCS_REF
 LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.vcs-url="https://github.com/stormerider/rancher-wpmu-nginx-trusty.git" \
       org.label-schema.vcs-ref=$VCS_REF \
-      org.label-schema.schema-version="1.0.3.9"
+      org.label-schema.schema-version="1.0.3.10"
 
 # Keep upstart from complaining
 RUN dpkg-divert --local --rename --add /sbin/initctl
