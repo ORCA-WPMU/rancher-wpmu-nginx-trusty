@@ -23,14 +23,6 @@ define('SECURE_AUTH_SALT', 'put your unique phrase here');
 define('LOGGED_IN_SALT',   'put your unique phrase here');
 define('NONCE_SALT',       'put your unique phrase here');
 
-// Debug settings
-define('WP_DEBUG', false);
-define('WP_DEBUG_LOG', false);
-define('WP_DEBUG_DISPLAY', false);
-define('SCRIPT_DEBUG', false);
-define('SAVEQUERIES', false);
-@ini_set('display_errors', 0);
-
 // ** MySQL settings ** //
 define('DB_NAME',     'database_name_here'); // The name of the database
 define('DB_USER',     'username_here');      // Your MySQL username

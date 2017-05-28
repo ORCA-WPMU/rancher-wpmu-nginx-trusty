@@ -80,13 +80,23 @@ done
 su -c "/usr/local/bin/wp plugin update --all --path='/usr/share/nginx/www'" www-data
 su -c "/usr/local/bin/wp theme update --all --path='/usr/share/nginx/www'" www-data
 
+# Enable debug logging upon request via env variable
+if [ "x$WORDPRESS_DEBUG" != "x" ]; then
+  cat << ENDL >> /usr/share/nginx/www/wp-config.php
+  // Debug settings
+  define('WP_DEBUG', true);
+  define('WP_DEBUG_LOG', true);
+  define('WP_DEBUG_DISPLAY', false);
+  define('SCRIPT_DEBUG', false);
+  define('SAVEQUERIES', false);
+  @ini_set('display_errors', 0);
+ENDL
+fi
+
+# Enable multisite and disable core updates
 cat << ENDL >> /usr/share/nginx/www/wp-config.php
   /* Multisite */
   define( 'WP_ALLOW_MULTISITE', true );
-ENDL
-
-# Disable core autoupdates
-cat << ENDL >> /usr/share/nginx/www/wp-config.php
   define( 'WP_AUTO_UPDATE_CORE', false );
 ENDL
 
