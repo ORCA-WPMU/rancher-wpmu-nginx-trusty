@@ -68,7 +68,7 @@ ADD ./wp-config-musample.php /usr/share/nginx/www/wp-config-musample.php
 ADD ./sunrise.php /usr/share/nginx/www/wp-content/sunrise.php
 
 # private expose
-EXPOSE 80 443
+EXPOSE 80
 
 # volume for mysql database and wordpress install
 VOLUME ["/usr/share/nginx/www/wp-content"]
