@@ -43,7 +43,7 @@ sed -e "s/database_name_here/$WORDPRESS_DB_NAME/
   s/localhost/$WORDPRESS_DB_HOST/
   s/username_here/$WORDPRESS_DB_USER/
   s/password_here/$WORDPRESS_DB_PASS/
-  /^.table_prefix/s/'wp_'/$WORDPRESS_DB_PRFX/
+  /^.table_prefix/s/'wp_'/'$WORDPRESS_DB_PRFX'/
   /'AUTH_KEY'/s/put your unique phrase here/$WORDPRESS_AUTH_KEY/
   /'SECURE_AUTH_KEY'/s/put your unique phrase here/$WORDPRESS_SECURE_AUTH_KEY/
   /'LOGGED_IN_KEY'/s/put your unique phrase here/$WORDPRESS_LOGGED_IN_KEY/
