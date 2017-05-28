@@ -1,4 +1,8 @@
 # docker-wpmu-nginx
+[![Docker Pulls](https://img.shields.io/docker/pulls/stormerider/rancher-wpmu-nginx-trusty.svg)][hub]
+[![Docker Stars](https://img.shields.io/docker/stars/stormerider/rancher-wpmu-nginx-trusty.svg)][hub]
+[![Docker Layers](https://images.microbadger.com/badges/image/stormerider/rancher-wpmu-nginx-trusty.svg)](https://microbadger.com/images/stormerider/rancher-wpmu-nginx-trusty "Get your own image badge on microbadger.com")
+[![Docker Version](https://images.microbadger.com/badges/version/stormerider/rancher-wpmu-nginx-trusty.svg)](https://microbadger.com/images/stormerider/rancher-wpmu-nginx-trusty "Get your own version badge on microbadger.com")
 
 A Dockerfile that installs the latest wordpress in a multisite configuration, nginx, php-apc and php-fpm.
 
